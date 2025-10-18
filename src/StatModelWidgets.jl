@@ -10,6 +10,7 @@ include("model.jl")
 include("linreg.jl")
 include("logreg.jl")
 include("linreg_interaction.jl")
+include("linreg_multiple.jl")
 include("slidergrid.jl")
 
 const theme = Theme(
@@ -37,6 +38,7 @@ const theme = Theme(
             "/" => app(LinearRegression; title = "Simple Linear Regression"),
             "/logistic-regression" => app(LogisticRegression; title = "Logistic Regression"),
             "/interaction" => app(LinearRegressionInteraction; title = "Interaction Effect"),
+            "/multiple" => app(MultipleLinearRegression; title = "Multiple Regression"),
         )
     end
 end
