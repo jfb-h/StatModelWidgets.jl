@@ -3,8 +3,6 @@ module StatModelWidgets
 using Bonito
 using WGLMakie
 using AccessibleModels
-using AccessibleModels: AccessorsExtra, getall
-using Printf
 
 Bonito.browser_display()
 
