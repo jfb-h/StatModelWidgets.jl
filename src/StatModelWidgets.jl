@@ -8,6 +8,7 @@ Bonito.browser_display()
 
 include("model.jl")
 include("linreg.jl")
+include("logreg.jl")
 include("slidergrid.jl")
 
 const theme = Theme(
@@ -33,6 +34,7 @@ const theme = Theme(
     return routes, task, server = interactive_server(assets) do
         return Routes(
             "/" => app(LinearRegression; title = "Simple Linear Regression"),
+            "/logistic-regression" => app(LogisticRegression; title = "Logistic Regression"),
         )
     end
 end

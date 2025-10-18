@@ -2,6 +2,7 @@ app(modeltype; title = "") = App(title = "StatModelWidgets") do session
     return DOM.div(
         id = "wrapper",
         Asset("assets/styles.css"),
+        Asset("https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"),
         header(title),
         modelview(amodel(modeltype)),
         footer(),

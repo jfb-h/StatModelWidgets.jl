@@ -19,8 +19,8 @@ end
 
 description(::LinearRegression) = DOM.div(
     style = Styles("font-size" => "36pt", "font-weight" => 400, "color" => "hsl(0, 0%, 20%)"),
-    DOM.p("y = α + xβ + ϵ"),
-    DOM.p("ϵ ~ Normal(0, σ)"),
+    DOM.p("\\[y = \\alpha + x\\beta + \\epsilon\\]"),
+    DOM.p("\\[\\epsilon \\sim \\textrm{Normal}(0, \\sigma)\\]"),
 )
 
 function simulate(m::LinearRegression)
