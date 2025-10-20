@@ -30,8 +30,16 @@ const theme = Theme(
     ),
 )
 
-@main(ARGS) = begin
-    set_theme!(theme)
+function deploy()
+    assets = [joinpath(@__DIR__, "../assets/styles.css")]
+    server = Bonito.Server("127.0.0.1", 8082; proxy_url = "https://eggroup.geographie.uni-muenchen.de/statswidgets")
+    route!(server, "/linear-regression" => app(LinearRegression; title = "Simple Linear Regression"))
+    route!(server, "/logistic-regression" => app(LogisticRegression; title = "Logistic Regression"))
+    route!(server, "/interaction-effect" => app(LinearRegressionInteraction; title = "Interaction Effect"))
+    route!(server, "/multiple-linear-regression" => app(MultipleLinearRegression; title = "Multiple Linear Regression"))
+end
+
+function develop()
     assets = [joinpath(@__DIR__, "../assets/styles.css")]
     return routes, task, server = interactive_server(assets) do
         return Routes(
@@ -43,13 +51,10 @@ const theme = Theme(
     end
 end
 
-
-function deploy()
-    server = Bonito.Server("127.0.0.1", 8081; proxy_url = "https://eggroup.geographie.uni-muenchen.de/statswidgets")
-    route!(server, "/linear-regression" => app(LinearRegression; title = "Simple Linear Regression")),
-    route!(server, "/logistic-regression" => app(LogisticRegression; title = "Logistic Regression")),
-    route!(server, "/interaction-effect" => app(LinearRegressionInteraction; title = "Interaction Effect")),
-    route!(server, "/multiple-linear-regression" => app(MultipleLinearRegression; title = "Multiple Linear Regression")),
+@main(ARGS) = begin
+    set_theme!(theme)
+    deploy()
 end
+
 
 end # module StatModelWidgets

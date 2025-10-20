@@ -8,6 +8,7 @@ AccessibleModels = "4b3c8bd9-8c05-441a-9330-31ce8207a5fd"
 Bonito = "824d6782-a2ef-11e9-3a09-e5662e0c26f8"
 Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
 
 [compat]
@@ -15,4 +16,5 @@ AccessibleModels = "0.1.8"
 Bonito = "4.1.7"
 Makie = "0.24.6"
 Printf = "1.11.0"
+Revise = "3.10.0"
 WGLMakie = "0.13.6"
