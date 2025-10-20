@@ -43,4 +43,13 @@ const theme = Theme(
     end
 end
 
+
+function deploy()
+    server = Bonito.Server("127.0.0.1", 8081; proxy_url = "https://eggroup.geographie.uni-muenchen.de/statswidgets")
+    route!(server, "/linear-regression" => app(LinearRegression; title = "Simple Linear Regression")),
+    route!(server, "/logistic-regression" => app(LogisticRegression; title = "Logistic Regression")),
+    route!(server, "/interaction-effect" => app(LinearRegressionInteraction; title = "Interaction Effect")),
+    route!(server, "/multiple-linear-regression" => app(MultipleLinearRegression; title = "Multiple Linear Regression")),
+end
+
 end # module StatModelWidgets
