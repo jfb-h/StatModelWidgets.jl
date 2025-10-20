@@ -8,12 +8,12 @@ end
 (m::MultipleLinearRegression)(x₁, x₂) = m.α + m.β₁ * x₁ + m.β₂ * x₂
 
 function amodel(::Type{MultipleLinearRegression})
-    lm = MultipleLinearRegression(0.0, 1.0, 1.0, 1.0)
+    lm = MultipleLinearRegression(0.0, 0.5, 0.0, 1.0)
     return AccessibleModel(
         lm, (
-            (@o _.α) => -3 .. 3,
-            (@o _.β₁) => -3 .. 3,
-            (@o _.β₂) => -3 .. 3,
+            (@o _.α) => -2 .. 2,
+            (@o _.β₁) => -2 .. 2,
+            (@o _.β₂) => -2 .. 2,
             (@o _.σ) => 0 .. 2,
         )
     )
@@ -26,7 +26,7 @@ description(::MultipleLinearRegression) = DOM.div(
 )
 
 function simulate(m::MultipleLinearRegression)
-    n = 50
+    n = 100
     x₁ = rand(n) .* 4 .- 2
     x₂ = rand(n) .* 4 .- 2
     y = [m(x₁i, x₂i) + m.σ * randn() for (x₁i, x₂i) in zip(x₁, x₂)]
@@ -47,7 +47,7 @@ function modelplot(::MultipleLinearRegression)
         scatter_x₁ = Observable(Float64[])
         scatter_x₂ = Observable(Float64[])
         scatter_y = Observable(Float64[])
-        scatter!(ax, scatter_x₁, scatter_x₂, scatter_y; color = :black, markersize = 10)
+        scatter!(ax, scatter_x₁, scatter_x₂, scatter_y; color = :black, markersize = 8)
 
         on(data) do d
             if isnothing(d)

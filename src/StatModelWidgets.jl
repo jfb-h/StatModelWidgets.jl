@@ -7,11 +7,11 @@ using AccessibleModels
 Bonito.browser_display()
 
 include("model.jl")
-include("linreg.jl")
-include("logreg.jl")
-include("linreg_interaction.jl")
-include("linreg_multiple.jl")
 include("slidergrid.jl")
+include("models/linreg.jl")
+include("models/logreg.jl")
+include("models/linreg_interaction.jl")
+include("models/linreg_multiple.jl")
 
 const theme = Theme(
     size = (900, 700),
@@ -37,8 +37,8 @@ const theme = Theme(
         return Routes(
             "/" => app(LinearRegression; title = "Simple Linear Regression"),
             "/logistic-regression" => app(LogisticRegression; title = "Logistic Regression"),
-            "/interaction" => app(LinearRegressionInteraction; title = "Interaction Effect"),
-            "/multiple" => app(MultipleLinearRegression; title = "Multiple Regression"),
+            "/interaction-effect" => app(LinearRegressionInteraction; title = "Interaction Effect"),
+            "/multiple-linear-regression" => app(MultipleLinearRegression; title = "Multiple Linear Regression"),
         )
     end
 end
