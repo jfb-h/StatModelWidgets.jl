@@ -53,7 +53,15 @@ end
 
 @main(ARGS) = begin
     set_theme!(theme)
-    deploy()
+    assets = [joinpath(@__DIR__, "../assets/styles.css")]
+    return routes, task, server = interactive_server(assets) do
+        return Routes(
+            "/" => app(LinearRegression; title = "Simple Linear Regression"),
+            "/logistic-regression" => app(LogisticRegression; title = "Logistic Regression"),
+            "/interaction-effect" => app(LinearRegressionInteraction; title = "Interaction Effect"),
+            "/multiple-linear-regression" => app(MultipleLinearRegression; title = "Multiple Linear Regression"),
+        )
+    end
 end
 
 
